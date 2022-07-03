@@ -1,0 +1,130 @@
+/* 기본 스타일 초기화 */
+* {
+	/* margin 0, padding 0을 줌으로써 브라우저의 기본 margin과 padding 초기화 */
+	margin: 0;
+	padding: 0;
+	border: border-box; /* width, height 속성 범위를 content에서 border까지 확장 */
+}
+
+.container {
+	width: 1200px;
+	margin: 0 auto; /* container를 브라우저의 수평 중앙 정렬 */
+}
+
+/* ------------------------ header ----------------------- */
+header {
+	padding: 1rem; /* 1rem = 16px*/
+	/* border: 5px solid red; 각 최상위 태그에 식별을 위한 테두리 표시 */
+	width: 100vw; /* 반응형 웹을 고려한 vw단위 사용 */
+	position: fixed; /* 스크롤 시 헤더 고정 */
+	z-index: 3;
+}
+
+header > .container {
+	/* 플렉스 컨테이너 */
+	display: flex; /* header 내부의 Who Am I와 Navigation들을 수평 요소 배치 */
+
+	/* 플렉스 아이템 */
+	justify-content: space-between; /* Who Am I는 왼쪽으로, Nav list는 우측 정렬 */
+	align-items: center; /* 플렉스 아이템을 교차축 방향 중앙 정렬 (수직 중앙 정렬) */
+
+	/* 테두리 스타일 */
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px white;
+}
+
+/* 헤더 버튼 스타일링 */
+header button {
+	color: white;
+	background: transparent; /* 버튼의 기존 스타일의 배경 제거 */
+	border: 0px; /* 버튼 테두리 제거 */
+}
+
+/* 헤더의 버튼에 마우스 호버시 음영 효과 */
+header button:hover {
+	text-shadow: 0px 0px 20px white;
+	cursor: pointer;
+	/* TODO: 밑줄 긋기 애니메이션 */
+}
+
+/* "Who Am I" 버튼 스타일링  */
+header .container > button {
+	padding: 1rem;
+	font-size: 1.8rem;
+	font-weight: 900;
+}
+
+
+header nav  ul {
+	display: flex; /* Navigation 버튼 한 줄에 배치 */
+}
+
+header nav li {
+	list-style: none; /* 리스트 왼쪽에 표시되는 기호(점) 삭제 */
+	padding: 1rem;
+}
+
+header nav li button {
+	font-size: 1.2rem;
+	font-style: bold;
+	border: 1px solid transparent; /* 투명 border 설정 */
+}
+
+header nav li button:hover {
+	border-bottom: 1px solid white;
+}
+
+/* ----------- Introduction ------------- */
+main.introduction {
+	width: 100vw;
+	/* height: 100vh; */
+	height: 1500px; /* 스크롤 시연을 위한 height */
+	z-index: 2;
+	position: absolute; /* header를 포함하여 배경 설정 */
+	background: linear-gradient(blue, pink);
+	text-align: center;
+	color: white;
+}
+
+main.introduction h3 {
+	margin-top: 10rem;
+	font-size: 3.3rem;
+	padding: 0.8rem;
+}
+
+main.introduction h5 {
+	font-size: 1.9rem;
+	padding: 0.5rem;
+}
+
+main.introduction p {
+	font-size: 1.2rem;
+	padding: 0.5rem;
+}
+/* ----------------------- section --------------------- */
+section {
+	padding: 1rem;
+	width: 100vw;
+	visibility: hidden;
+}
+
+section.contents {
+	border: 5px solid yellow;
+}
+
+section.contents > .container {
+	border: 1px solid black;
+	height: 400px;
+}
+
+/* ------------------------ footer -------------------------- */
+footer {
+	padding: 1rem;
+	width: 100vw;
+	border: 5px solid blue;
+	visibility: hidden;
+}
+
+footer > .container {
+	border: 1px solid black;
+}
