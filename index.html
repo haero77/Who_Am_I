@@ -5,12 +5,25 @@
 		<meta http-equiv="X-UA-Compatible" scontent="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Who Am I?</title>
+		<!-- 기호(아이콘) 사이트 : font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
 		<!-- CSS3 파일 링크 -->
 		<link type="text/css" rel="stylesheet" href="./index.css" />
+		<style>
+			/* 웹 폰트 */
+
+			@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+		</style>
 	</head>
 	<body>
 		<!-- 시맨틱 태그: header -->
-		<!-- TODO: scrolling 시에도 헤더 유지 -->
+		<!-- scrolling 시에도 헤더 유지 -->
 		<header>
 			<!-- header태그 내의 로고(Who AM I)와 nav태그들을 묶는 container -->
 			<div class="container">
@@ -30,11 +43,14 @@
 		<main class="introduction">
 			<div class="container">
 				<h3>I'M</h3>
-				<h5>Back-End Developer</h5>
+				<h5><span>Back-End Developer</span></h5>
 				<p>
-					Laboris sunt incididunt ea commodo in consectetur consectetur veniam in eu consectetur
-					ullamco.
+					Do exercitation deserunt cupidatat tempor esse tempor duis officia fugiat.
+					Excepteur id anim consectetur eiusmod qui pariatur proident ad cupidatat do exercitation.
 				</p>
+				<div class="scrolling-button">
+					<i class="fa-solid fa-circle-down"></i>
+				</div>
 			</div>
 		</main>
 		<!-- Contents: About, Skills, Contact -->
