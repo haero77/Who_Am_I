@@ -54,8 +54,7 @@ header .container > button {
 	font-weight: 900;
 }
 
-
-header nav  ul {
+header nav ul {
 	display: flex; /* Navigation 버튼 한 줄에 배치 */
 }
 
@@ -77,17 +76,18 @@ header nav li button:hover {
 /* ----------- Introduction ------------- */
 main.introduction {
 	width: 100vw;
-	/* height: 100vh; */
-	height: 1500px; /* 스크롤 시연을 위한 height */
+	height: 100vh;
+	/* height: 1500px; 스크롤 시연을 위한 height */
 	z-index: 2;
 	position: absolute; /* header를 포함하여 배경 설정 */
 	background: linear-gradient(blue, pink);
 	text-align: center;
 	color: white;
+	font-family: "Roboto", sans-serif;
 }
 
 main.introduction h3 {
-	margin-top: 10rem;
+	margin-top: 15rem;
 	font-size: 3.3rem;
 	padding: 0.8rem;
 }
@@ -100,6 +100,60 @@ main.introduction h5 {
 main.introduction p {
 	font-size: 1.2rem;
 	padding: 0.5rem;
+	width: 1000px;
+	margin-top: 5rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 커서 깜빡이는 애니메이션 */
+@keyframes cursorBlink {
+	from {
+		opacity: 0%; /* 불투명도: 0 -> 불투명해서 요소가 안 보임 */
+	}
+	to {
+		opacity: 100%; /* 불투명도: 1 -> 투명해서 요소가 잘 보임 */
+	}
+}
+
+/* 커서 깜빡이는 효과: 가상 요소 선택자 after를 사용하여 텍스트 맨 뒤에 위치*/
+main.introduction h5 span::after {
+	height: 30px;
+	width: 3px;
+	background-color: white;
+	display: inline-block; /* span의 display inline -> inline block */
+	animation-name: cursorBlink;
+	animation-duration: 0.6s;
+	animation-iteration-count: infinite; /* 애니메이션 무한 반복 */
+	animation-timing-function: ease-in-out; /* 빨라지다가 다시 느려짐: 숨쉬기 효과*/
+	content: ""; /* content를 임의로 채워넣어야 문서에 표시된다. */
+}
+
+/* jumping 애니메이션 for 스크롤링 버튼 */
+@keyframes jumping {
+	from {
+		bottom: 1.2rem;
+	}
+	50% {
+		bottom: 2.4rem;
+	}
+	to {
+		bottom: 1.2rem;
+	}
+}
+
+/*  About 섹션으로 한 번에 이동하는 스크롤링 버튼 */
+main.introduction .scrolling-button > i {
+	/* TODO: JS로 스크롤 액션 구현 */
+	position: absolute;
+	bottom: 1rem;
+	font-size: 3rem;
+	/* 애니메이션: 점핑 애니메이션 */
+	animation-name: jumping;
+	animation-duration: 0.7s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	cursor: pointer; /* 마우스 호버 시 포인터 변경 */
 }
 /* ----------------------- section --------------------- */
 section {
