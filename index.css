@@ -1,3 +1,6 @@
+/* 구글 웹 폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 /* 기본 스타일 초기화 */
 * {
 	/* margin 0, padding 0을 줌으로써 브라우저의 기본 margin과 padding 초기화 */
@@ -11,13 +14,19 @@
 	margin: 0 auto; /* container를 브라우저의 수평 중앙 정렬 */
 }
 
+a, a:visited, a:link {
+	color:inherit;
+}
+
+
 /* ------------------------ header ----------------------- */
 header {
 	padding: 1rem; /* 1rem = 16px*/
 	/* border: 5px solid red; 각 최상위 태그에 식별을 위한 테두리 표시 */
 	width: 100vw; /* 반응형 웹을 고려한 vw단위 사용 */
-	position: fixed; /* 스크롤 시 헤더 고정 */
-	z-index: 3;
+	position: fixed;
+	z-index: 1;
+	top: 0;
 }
 
 header > .container {
@@ -74,30 +83,29 @@ header nav li button:hover {
 }
 
 /* ----------- Introduction ------------- */
-main.introduction {
+main.welcome {
+	/* 크기, 배경색 지정 */
 	width: 100vw;
 	height: 100vh;
-	/* height: 1500px; 스크롤 시연을 위한 height */
-	z-index: 2;
-	position: absolute; /* header를 포함하여 배경 설정 */
-	background: linear-gradient(blue, pink);
+	background-image: linear-gradient(blue, pink);
+	display: flex; /* 배경이 화면 가득 차도록 설정 */
 	text-align: center;
 	color: white;
 	font-family: "Roboto", sans-serif;
 }
 
-main.introduction h3 {
+main.welcome h3 {
 	margin-top: 15rem;
 	font-size: 3.3rem;
 	padding: 0.8rem;
 }
 
-main.introduction h5 {
+main.welcome h5 {
 	font-size: 1.9rem;
 	padding: 0.5rem;
 }
 
-main.introduction p {
+main.welcome p {
 	font-size: 1.2rem;
 	padding: 0.5rem;
 	width: 1000px;
@@ -117,7 +125,7 @@ main.introduction p {
 }
 
 /* 커서 깜빡이는 효과: 가상 요소 선택자 after를 사용하여 텍스트 맨 뒤에 위치*/
-main.introduction h5 span::after {
+main.welcome h5 span::after {
 	height: 30px;
 	width: 3px;
 	background-color: white;
@@ -143,7 +151,7 @@ main.introduction h5 span::after {
 }
 
 /*  About 섹션으로 한 번에 이동하는 스크롤링 버튼 */
-main.introduction .scrolling-button > i {
+main.welcome .scrolling-button > i {
 	/* TODO: JS로 스크롤 액션 구현 */
 	position: absolute;
 	bottom: 1rem;
@@ -155,22 +163,79 @@ main.introduction .scrolling-button > i {
 	animation-timing-function: ease-in-out;
 	cursor: pointer; /* 마우스 호버 시 포인터 변경 */
 }
-/* ----------------------- section --------------------- */
-section {
-	padding: 1rem;
-	width: 100vw;
-	visibility: hidden;
+/* ----------------------- Section : About --------------------- */
+section#about {
+	padding: 5.5rem 0;
 }
 
-section.contents {
-	border: 5px solid yellow;
+section#about .section-title {
+	margin-bottom: 1.9rem;
 }
 
-section.contents > .container {
-	border: 1px solid black;
-	height: 400px;
+section#about .section-title h4{
+	font-size: 1.3rem;
+	margin-bottom: 0.5rem;
+	color: pink;
 }
 
+section#about .section-title h2{
+	font-size: 2.3rem;
+}
+
+
+
+section#about .about-body .profile {
+	width: 50%; /* 부모요소의 너비 50% = 600px 로 너비지정 */
+	float: left; /* 한 줄 배치 */
+}
+
+section#about .about-body .introduction {
+	width: 50%;
+	float: left;
+	box-sizing: border-box; /* 텍스트 벗어남 방지 */
+	padding: 0 2rem;
+}
+
+section#about .about-body .introduction h3{
+	margin-bottom: 0.5rem;
+	font-size: 1.9rem;
+}
+
+section#about .about-body .introduction h3 span{
+	color: blue;
+}
+
+
+section#about .about-body .introduction p{
+	font-size: 1.3rem;
+	padding: 0.5rem 0;
+}
+
+section#about .about-body .introduction #personal-page {
+	text-align: right;
+}
+
+section#about .about-body .introduction a {
+	font-size: 3rem;
+	display: inline-block;
+	margin: auto 0.2rem;
+}
+
+section#about  .about-body::after{
+	/* float 사용으로 인한 .about-body height 0으로 사라지는 문제 해결*/
+	content:"";
+	clear: both;
+	display: block;
+}
+
+section#about img{
+	max-width: 100%;
+}
+
+
+/* ----------- Section: Skills ---------- */
+section#skills {
+}
 /* ------------------------ footer -------------------------- */
 footer {
 	padding: 1rem;
