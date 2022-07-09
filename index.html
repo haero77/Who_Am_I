@@ -14,7 +14,7 @@
 			referrerpolicy="no-referrer"
 		/>
 		<!-- CSS3 파일 링크 -->
-		<link type="text/css" rel="stylesheet" href="./index.css" />
+		<link type="text/css" rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
 		<!-- 시맨틱 태그: header -->
@@ -26,9 +26,22 @@
 				<!-- 각 섹션으로 이동할 수 있는 navigation -->
 				<nav>
 					<ul>
-						<li><button class="nav-button">About</button></li>
-						<li><button class="nav-button">Skills</button></li>
-						<li><button class="nav-button">Contact</button></li>
+						<li>
+							<button class="nav-button">
+								<!-- anker를 이용하여 각 섹션으로 이동 -->
+								<a href="#about">About</a>
+							</button>
+						</li>
+						<li>
+							<button class="nav-button">
+								<a href="#skills">Skills</a>
+							</button>
+						</li>
+						<li>
+							<button class="nav-button">
+								<a href="#skills">Contact</a>
+							</button>
+						</li>
 					</ul>
 				</nav>
 			</div>
@@ -36,8 +49,8 @@
 		<!-- welcome: 헤더 다음의 도입부 페이지 -->
 		<main class="welcome">
 			<div class="container">
-				<h3>I'M</h3>
-				<h5><span>Back-End Developer</span></h5>
+				<h3>저는</h3>
+				<h5><span id="introduction-text"></span> 개발자 입니다.</h5>
 				<p>
 					Do exercitation deserunt cupidatat tempor esse tempor duis officia fugiat. Excepteur id
 					anim consectetur eiusmod qui pariatur proident ad cupidatat do exercitation.
@@ -52,7 +65,6 @@
 		<section id="about">
 			<div class="container">
 				<div class="section-title">
-					<h4>Introduction</h4>
 					<h2>About Me</h2>
 				</div>
 				<div class="about-body">
@@ -78,10 +90,10 @@
 						</p>
 						<!-- 개인 페이지로 이동하는 하이퍼링크 -->
 						<div id="personal-page">
-							<a href="">
+							<a href="https://github.com/preferKim" target="_blank">
 								<i class="fa-brands fa-github"></i>
 							</a>
-							<a href="">
+							<a href="https://www.instagram.com/pref_k/" target="_blank">
 								<i class="fa-brands fa-instagram"></i>
 							</a>
 						</div>
@@ -91,10 +103,82 @@
 		</section>
 
 		<!-- Section: Skills -->
-		<section id="skills"></section>
+		<section id="skills">
+			<div class="container">
+				<div class="section-title">
+					<h2>Skills</h2>
+				</div>
+				<div class="programming">
+					<div class="details">
+						<i class="fa-brands fa-java"></i>
+						<p class="language">Java</p>
+						<p>
+							Fugiat duis laborum do aliqua id irure dolor enim adipisicing officia aliquip cillum
+							exercitation.
+						</p>
+					</div>
+					<div class="details">
+						<!-- <i class="fa-regular fa-leaf"></i> -->
+						<i class="fa-solid fa-leaf"></i>
+						<p class="language">Spring</p>
+						<p>
+							Ad nostrud sit sint culpa. Ut occaecat ipsum pariatur fugiat proident elit occaecat
+							duis.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- skills 섹션 이후의 배경 이미지. 고정된 효과 -->
+		<div class="middle-background"></div>
 
 		<!-- Section: Contact -->
-		<section id="contact"></section>
+		<section id="contact">
+			<div class="container">
+				<div class="section-title">
+					<h2>Contact</h2>
+				</div>
+				<div class="email-container">
+					<form action>
+						<!-- Contact - email 보내기 왼쪽 블럭 -->
+						<div class="email-left">
+							<div class="input">
+								<label for="name">name</label>
+								<input type="text" placeholder="Hong-gil-dong" id="name" />
+							</div>
+							<div class="input">
+								<label for="email">email</label>
+								<input type="email" id="email" placeholder="abcde@email.com" />
+							</div>
+						</div>
+						<!-- Contact - email 보내기 오른쪽 블럭 -->
+						<div class="email-right">
+							<div class="input">
+								<label for="email-contents">contents</label>
+								<textarea id="email-contents"></textarea>
+							</div>
+						</div>
+						<!-- Send Button -->
+						<div class="send-button">
+							<button type="submit" id="send-button">
+								<i class="fa-solid fa-paper-plane"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+				<div class="personal-info">
+					<div class="personal-detail">
+						<i class="fa-solid fa-envelope"></i>
+						<span>shineecard5@gmail.com</span>
+					</div>
+					<div class="personal-detail">
+						<i class="fa-solid fa-phone"></i>
+						<span>+82 10-2996-4087</span>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- footer -->
 		<footer>
@@ -103,5 +187,8 @@
 				Cupidatat reprehenderit excepteur amet consectetur id.
 			</div>
 		</footer>
+
+		<!-- Javascript -->
+		<script src="./JS/main.js"></script>
 	</body>
 </html>

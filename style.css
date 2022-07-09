@@ -1,0 +1,466 @@
+/* 구글 웹 폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* 기본 스타일 초기화 */
+* {
+	/* margin 0, padding 0을 줌으로써 브라우저의 기본 margin과 padding 초기화 */
+	margin: 0;
+	padding: 0;
+	border: border-box; /* width, height 속성 범위를 content에서 border까지 확장 */
+}
+
+/* 각 섹션 별 모든 요소를 담는 contatiner */
+.container {
+	width: 1200px;
+	margin: 0 auto; /* container를 브라우저의 수평 중앙 정렬 */
+}
+
+/* a 태그 텍스트 속성 초기화 */
+a,
+a:visited,
+a:link {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* ------------------------ header ----------------------- */
+/* header 크기, 여백, 위치 */
+header {
+	padding: 1rem; /* 1rem = 16px*/
+	width: 100vw; /* 반응형 웹을 고려한 vw단위 사용 */
+	position: fixed;
+	z-index: 1;
+	top: 0;
+}
+
+/* header의 모든 요소를 감싸는 container */
+header > .container {
+	/* 플렉스 컨테이너 */
+	display: flex; /* header 내부의 Who Am I와 Navigation들을 수평 요소 배치 */
+
+	/* 플렉스 아이템 */
+	justify-content: space-between; /* Who Am I는 왼쪽으로, Nav list는 우측 정렬 */
+	align-items: center; /* 플렉스 아이템을 교차축 방향 중앙 정렬 (수직 중앙 정렬) */
+
+	/* 테두리 스타일 */
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px white;
+}
+
+/* 헤더 버튼 스타일링 */
+header button {
+	color: white;
+	background: transparent; /* 버튼의 기존 스타일의 배경 제거 */
+	border: 0px; /* 버튼 테두리 제거 */
+}
+
+/* 헤더의 버튼에 마우스 호버시 음영 효과 */
+header button:hover {
+	text-shadow: 0px 0px 20px white;
+	cursor: pointer;
+	/* TODO: 밑줄 긋기 애니메이션 */
+}
+
+/* "Who Am I" 버튼 스타일링  */
+header .container > button {
+	padding: 1rem;
+	font-size: 1.8rem;
+	font-weight: 900;
+}
+
+/* header navigation 한 줄에 배치 */
+header nav ul {
+	display: flex; /* Navigation 버튼 한 줄에 배치 */
+}
+
+/* About, Skills, Contact 리스트 스타일 */
+header nav li {
+	list-style: none; /* 리스트 왼쪽에 표시되는 기호(점) 삭제 */
+	padding: 1rem;
+}
+
+/* About, Skills, Contact 버튼 스타일 */
+header nav li button {
+	font-size: 1.2rem;
+	font-style: bold;
+	border: 1px solid transparent; /* 투명 border 설정 */
+}
+
+/* About, Skills, Contact 버튼 호버 이벤트 */
+header nav li button:hover {
+	border-bottom: 1px solid white;
+}
+
+/* ----------- Welcome ------------- */
+/* welcome 섹션 전체 크기, 여백, 위치 */
+main.welcome {
+	/* 크기, 배경색 지정 */
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(blue, pink);
+	display: flex; /* 배경이 화면 가득 차도록 설정 */
+	text-align: center;
+	color: white;
+	font-family: "Roboto", sans-serif;
+}
+
+/* welcome 메시지 상단 */
+main.welcome h3 {
+	margin-top: 15rem;
+	font-size: 3.3rem;
+	padding: 0.8rem;
+}
+
+/* welcome 메시지 중단 (텍스트 지워지는 애니메이션 부분) */
+main.welcome h5 {
+	font-size: 1.9rem;
+	padding: 0.5rem;
+}
+
+/* welcome 메시지 하단 */
+main.welcome p {
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	width: 1000px;
+	margin-top: 5rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* welcome 메시지 중단 - 커서 깜빡이는 애니메이션 */
+@keyframes cursorBlink {
+	from {
+		opacity: 0%; /* 불투명도: 0 -> 불투명해서 요소가 안 보임 */
+	}
+	to {
+		opacity: 100%; /* 불투명도: 1 -> 투명해서 요소가 잘 보임 */
+	}
+}
+
+/* 커서 깜빡이는 효과: 가상 요소 선택자 after를 사용하여 텍스트 맨 뒤에 위치*/
+main.welcome h5 span::after {
+	height: 30px;
+	width: 3px;
+	background-color: white;
+	display: inline-block; /* span의 display inline -> inline block */
+	animation-name: cursorBlink;
+	animation-duration: 0.6s;
+	animation-iteration-count: infinite; /* 애니메이션 무한 반복 */
+	animation-timing-function: ease-in-out; /* 빨라지다가 다시 느려짐: 숨쉬기 효과*/
+	content: ""; /* content를 임의로 채워넣어야 문서에 표시된다. */
+}
+
+/* jumping 애니메이션 for 스크롤링 버튼 */
+@keyframes jumping {
+	from {
+		bottom: 1.2rem;
+	}
+	50% {
+		bottom: 2.4rem;
+	}
+	to {
+		bottom: 1.2rem;
+	}
+}
+
+/*  About 섹션으로 한 번에 이동하는 스크롤링 버튼 */
+main.welcome .scrolling-button > i {
+	/* TODO: JS로 스크롤 액션 구현 */
+	position: absolute;
+	bottom: 1rem;
+	font-size: 3rem;
+	/* 애니메이션: 점핑 애니메이션 */
+	animation-name: jumping;
+	animation-duration: 0.7s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	cursor: pointer; /* 마우스 호버 시 포인터 변경 */
+}
+/* ----------------------- Section : About --------------------- */
+/* section 공통 여백 */
+section {
+	padding: 8rem 0;
+}
+
+/* section 짝수 번째 요소 배경색 */
+section:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+/* section 타이틀 스타일 */
+section .section-title h2 {
+	margin-bottom: 1.5rem;
+	font-size: 2.8rem;
+	color: #7e57ef;
+}
+
+/* about 섹션 profile 이미지*/
+section#about .about-body .profile {
+	width: 50%; /* 부모요소의 너비 50% = 600px 로 너비지정 */
+	float: left; /* 한 줄 배치 */
+}
+
+/* about 섹션 소개글 */
+section#about .about-body .introduction {
+	width: 50%;
+	float: left;
+	box-sizing: border-box; /* 텍스트 벗어남 방지 */
+	padding: 0 2rem;
+}
+
+/* about 섹션 소개글 - 도입부 */
+section#about .about-body .introduction h3 {
+	margin-bottom: 0.5rem;
+	font-size: 1.9rem;
+}
+
+/* about 섹션 소개글 - 도입부 - 부분 스타일링 */
+section#about .about-body .introduction h3 span {
+	color: #7e57ef;
+}
+
+/* about 섹션 소개글 - 본문 */
+section#about .about-body .introduction p {
+	font-size: 1.3rem;
+	padding: 0.5rem 0;
+}
+
+/* about 섹션 아이콘 박스 */
+section#about .about-body .introduction #personal-page {
+	text-align: right;
+}
+
+/* about 섹션 깃허브, 인스타그램 하이퍼링크 아이콘 */
+section#about .about-body .introduction a {
+	font-size: 3rem;
+	display: inline-block;
+	margin-top: 0.5rem;
+}
+
+/* float 사용으로 인한 .about-body height 0으로 사라지는 문제 해결*/
+section#about .about-body::after {
+	/* 부모 요소가 자식 요소 높이 못 찾는 문제 수정 */
+	content: "";
+	clear: both;
+	display: block;
+}
+
+/* about 섹션 profile 사진 크기 */
+section#about img {
+	max-width: 100%; /* 박스를 벗어나지 않게 설정 */
+}
+
+/* ----------- Section: Skills ---------- */
+/* skills 섹션 크기 */
+section#skills {
+	width: 100%;
+}
+
+/* skills 섹션 세부사항 박스 */
+section#skills .container .programming {
+	width: 100%;
+}
+
+/* details 박스의 height 0 되는 문제 해결 */
+section#skills .container .programming::after {
+	/* 부모 요소가 자식 요소 높이 못 찾는 문제 수정 */
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* skills 섹션 세부사항(Java, Spring) 크기, 여백, 배경색 */
+section#skills .container .programming .details {
+	background-color: white;
+	width: 40%;
+	float: left;
+	box-sizing: border-box; /* padding을 포함하여 width 계산 */
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 3rem;
+	text-align: center;
+}
+
+/* skills 섹션 세부사항 아이콘 크기 */
+section#skills .container .programming .details i {
+	font-size: 7rem;
+	margin-bottom: 0.5rem;
+	color: #7e57ef;
+}
+
+/* skills 섹션 세부사항 언어/프레임워크 텍스트 */
+section#skills .container .programming .details .language {
+	font-size: 2.5rem;
+	font-weight: 600;
+	color: #7e57ef;
+}
+
+/* skills 섹션 세부사항 언어/프레임워크 설명 텍스트 */
+section#skills .container .programming .details p {
+	padding: 0.3rem;
+}
+
+/* skills 섹션 박스 호버 이벤트 */
+section#skills .container .programming .details:hover {
+	background-color: #b4a7d6;
+	box-shadow: 0px 0px 100px #b4a7d6;
+	color: white;
+}
+
+/* skills 섹션 박스 호버 이벤트 발생 시 아이콘 색상 변경 */
+section#skills .container .programming .details:hover i {
+	color: white;
+}
+
+/* skills 섹션 박스 호버 이벤트 발생 시 .language 텍스트 색상 변경 */
+section#skills .container .programming .details:hover .language {
+	color: white;
+}
+
+/* ---------- middle-background --------- */
+div.middle-background {
+	background-image: url("./image/code.jpg");
+	height: 700px;
+	background-position: center center; /* 이미지 중앙 위치 */
+	background-size: cover; /* 빈 공간이 없도록 이미지 확대 */
+	background-attachment: fixed; /* 배경 이미지의 스크롤 여부 : 스크롤 되지 않고 고정됨 */
+}
+
+/* ------------- Section: Contact ------------ */
+section#contact {
+	background-color: white;
+}
+
+section#contact .container .email-container {
+	margin: 0 15%;
+	border: 2px solid #7e57ef;
+	padding: 1.5rem;
+	border-radius: 10px;
+}
+
+/* section#contact .container .email-container .input {
+	margin-bottom: 1rem;;
+} */
+
+.email-container::after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+.email-container .input {
+	box-sizing: border-box;
+	padding: 0.5rem;
+}
+
+.email-container .input input {
+	padding: 0.5rem;
+	outline: none;
+	width: 100%;
+	border: 2px solid #b4a7d6;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.email-container .input input:focus,
+.email-container .input textarea:focus {
+	box-shadow: 0px 0px 20px #b4a7d6;
+}
+
+.email-container .input textarea {
+	padding: 0.5rem;
+	width: 100%;
+	height: 120px;
+	outline: none;
+	box-sizing: border-box;
+	border: 2px solid #b4a7d6;
+	border-radius: 5px;
+}
+
+.email-container .input label {
+	display: block;
+	margin-bottom: 0.3rem;
+	font-size: 1.2rem;
+}
+
+.email-container .email-left {
+	width: 50%;
+	float: left;
+}
+
+.email-container .email-right {
+	width: 50%;
+	float: right;
+}
+
+/* 이메일 전송 버튼 */
+.email-container .send-button {
+	clear: both;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.9rem;
+}
+
+.email-container #send-button {
+	display: block;
+	width: 100%;
+	height: 50px;
+	background-color: #b4a7d6;
+	border: 1px solid transparent;
+	color: white;
+}
+
+.email-container #send-button:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 20px #b4a7d6;
+}
+
+.email-container #send-button i {
+	font-size: 2rem;
+}
+
+/* 이메일, 전화번호 박스 */
+section#contact .personal-info {
+	margin-top: 1rem;
+}
+
+section#contact .personal-info .personal-detail {
+	text-align: center;
+	font-size: 1.35rem;
+	width: 30%;
+	padding: 0.8rem;
+	color: white;
+	background-color: #7e57ef;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+
+.personal-detail:first-child {
+	float: left;
+	margin-left: 18%;
+}
+
+.personal-detail:last-child {
+	float: right;
+	margin-right: 18%;
+}
+
+section#contact .personal-info .personal-detail i {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+section#contact .personal-info::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+/* ------------------------ footer -------------------------- */
+/* footer 크기, 여백, 위치 */
+footer {
+	padding: 1rem;
+	width: 100vw;
+	border: 5px solid blue;
+	visibility: hidden;
+}
