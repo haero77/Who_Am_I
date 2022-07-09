@@ -31,7 +31,7 @@ function deletingEffect() {
 // 다음 문장으로 넘어가는 함수
 function getNextText() {
 	textIndex = (textIndex + 1) % texts.length; // textIndex가 무한히 texts를 순환
-	text = texts[textIndex].split(""); //
+	text = texts[textIndex].split(""); // 새로운 문장을 다시 배열로 만든다.
 	typingEffect();
 }
 
@@ -45,6 +45,28 @@ function changeTextById(id, text) {
 function ask() {
 	let text = prompt("Who Are You?", ""); // 사용자 입력 프롬프트창
 	changeTextById("introduction-text", text); // 입력 텍스트로 요소의 텍스트 변경
+}
+
+// 내비게이션
+function navigate(obj) {
+	// 클릭이 이루어지는 객체의 title(퉅팁표시 속성)의 속성값을 찾는다.
+	const navTargetId = obj.title; // 객체의 title 속성값
+	// console.log(navTargetId);
+
+	// 찾은 title 속성값을 이용해 이동해야하는 element tag를 찾는다.
+	const navTarget = document.getElementById(navTargetId); // getElementById 안에 '#'포함 안 함
+	// console.log(navTarget);
+
+	// 현재 위치에서의 문서의 수직 방향 스크롤된 정도(px)
+	const currentYPostion = window.pageYOffset;
+	// console.log(currentYPostion);
+
+	// 위치해야하는 y 좌표  = 현재 y위치값 + 화면 상단으로부터의 이동할 element y값
+	const targetYPosition = currentYPostion + navTarget.getBoundingClientRect().top;
+	// console.log(targetYPosition);
+
+	// 이동해야하는 위치로 스크롤, 스크롤 시 부드럽게 스크롤
+	window.scrollTo({ top: targetYPosition, behavior: "smooth" });
 }
 
 /* main */

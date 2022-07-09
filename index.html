@@ -22,32 +22,25 @@
 			<!-- header태그 내의 로고(Who AM I)와 nav태그들을 묶는 container -->
 			<div class="container">
 				<!-- 좌측 상단: 프로젝트명(또는 로고)표시 -->
-				<button>Who Am I?</button>
+				<button title="welcome" onclick="navigate(this)">Who Am I?</button>
 				<!-- 각 섹션으로 이동할 수 있는 navigation -->
 				<nav>
 					<ul>
 						<li>
-							<button class="nav-button">
-								<!-- anker를 이용하여 각 섹션으로 이동 -->
-								<a href="#about">About</a>
-							</button>
+							<button class="nav-button" title="about" onclick="navigate(this)">About</button>
 						</li>
 						<li>
-							<button class="nav-button">
-								<a href="#skills">Skills</a>
-							</button>
+							<button class="nav-button" title="skills" onclick="navigate(this)">Skills</button>
 						</li>
 						<li>
-							<button class="nav-button">
-								<a href="#skills">Contact</a>
-							</button>
+							<button class="nav-button" title="contact" onclick="navigate(this)">Contact</button>
 						</li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 		<!-- welcome: 헤더 다음의 도입부 페이지 -->
-		<main class="welcome">
+		<main class="welcome" id="welcome">
 			<div class="container">
 				<h3>저는</h3>
 				<h5><span id="introduction-text"></span> 개발자 입니다.</h5>
@@ -55,7 +48,7 @@
 					Do exercitation deserunt cupidatat tempor esse tempor duis officia fugiat. Excepteur id
 					anim consectetur eiusmod qui pariatur proident ad cupidatat do exercitation.
 				</p>
-				<div class="scrolling-button">
+				<div class="scrolling-button" title="about" onclick="navigate(this)">
 					<i class="fa-solid fa-circle-down"></i>
 				</div>
 			</div>
@@ -182,13 +175,21 @@
 
 		<!-- footer -->
 		<footer>
-			<div class="container">
-				<h1>footer</h1>
-				Cupidatat reprehenderit excepteur amet consectetur id.
+			<div id="footer-container">
+				<span>Who Am I?</span>
+				<!-- 각 섹션으로 이동할 수 있는 navigation -->
+				<nav>
+					<ul>
+						<li>Thank you for visiting</li>
+						<li>
+							<i class="fa-regular fa-copyright"></i> Seon-Ho 2022.07
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</footer>
 
 		<!-- Javascript -->
-		<script src="./JS/main.js"></script>
+		<script src="./main.js"></script>
 	</body>
 </html>
