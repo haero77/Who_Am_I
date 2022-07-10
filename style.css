@@ -1,12 +1,18 @@
 /* 구글 웹 폰트 */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto+Slab:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap");
 
 /* 기본 스타일 초기화 */
 * {
 	/* margin 0, padding 0을 줌으로써 브라우저의 기본 margin과 padding 초기화 */
 	margin: 0;
 	padding: 0;
-	border: border-box; /* width, height 속성 범위를 content에서 border까지 확장 */
+	box-sizing: border-box; /* width, height 속성 범위를 content에서 border까지 확장 */
+	/* font-family: 'Roboto Condensed', sans-serif; */
+	font-family: "Roboto Condensed", sans-serif;
 }
 
 /* 각 섹션 별 모든 요소를 담는 contatiner */
@@ -44,9 +50,9 @@ header > .container {
 
 	/* 테두리 스타일 */
 	border-radius: 10px;
-	box-shadow: 0px 0px 10px #7e57ef;
-	background-color: #b4a7d6;
-	/* background-color: transparent; */
+	box-shadow: 0px 0px 10px #b4a7d6;
+	/* background-color: #b4a7d6; */
+	background-color: transparent;
 }
 
 /* 헤더 버튼 스타일링 */
@@ -60,7 +66,6 @@ header button {
 header button:hover {
 	text-shadow: 0px 0px 20px white;
 	cursor: pointer;
-	/* TODO: 밑줄 긋기 애니메이션 */
 }
 
 /* "Who Am I" 버튼 스타일링  */
@@ -84,13 +89,30 @@ header nav li {
 /* About, Skills, Contact 버튼 스타일 */
 header nav li button {
 	font-size: 1.2rem;
-	font-style: bold;
 	border: 1px solid transparent; /* 투명 border 설정 */
 }
 
 /* About, Skills, Contact 버튼 호버 이벤트 */
 header nav li button:hover {
 	border-bottom: 1px solid white;
+}
+
+/* 헤더 부분의 배경색을 변경하는 클래스 */
+header .change-opacity {
+	background-color: #b4a7d6;
+	animation-name: changeOpacity;
+	animation-duration: 0.7s;
+	animation-timing-function: ease-in-out;
+}
+
+/* opacity 변경 애니메이션 */
+@keyframes changeOpacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* ----------- Welcome ------------- */
@@ -103,19 +125,26 @@ main.welcome {
 	display: flex; /* 배경이 화면 가득 차도록 설정 */
 	text-align: center;
 	color: white;
-	font-family: "Roboto", sans-serif;
+}
+
+main.welcome h3,
+main.welcome h5,
+main.welcome h5 span {
+	/* font-family: 'Nanum Pen Script', cursive; */
+	font-family: "Nanum Brush Script", cursive;
+	font-weight: 500;
 }
 
 /* welcome 메시지 상단 */
 main.welcome h3 {
 	margin-top: 15rem;
-	font-size: 3.3rem;
+	font-size: 3.8rem;
 	padding: 0.8rem;
 }
 
 /* welcome 메시지 중단 (텍스트 지워지는 애니메이션 부분) */
 main.welcome h5 {
-	font-size: 1.9rem;
+	font-size: 2.5rem;
 	padding: 0.5rem;
 }
 
@@ -167,7 +196,6 @@ main.welcome h5 span::after {
 
 /*  About 섹션으로 한 번에 이동하는 스크롤링 버튼 */
 main.welcome .scrolling-button > i {
-	/* TODO: JS로 스크롤 액션 구현 */
 	position: absolute;
 	bottom: 1rem;
 	font-size: 3rem;
@@ -212,12 +240,14 @@ section#about .about-body .introduction {
 
 /* about 섹션 소개글 - 도입부 */
 section#about .about-body .introduction h3 {
+	font-family: "Noto Sans KR", sans-serif;
 	margin-bottom: 0.5rem;
 	font-size: 1.9rem;
 }
 
 /* about 섹션 소개글 - 도입부 - 부분 스타일링 */
 section#about .about-body .introduction h3 span {
+	font-family: "Noto Sans KR", sans-serif;
 	color: #7e57ef;
 }
 
@@ -329,10 +359,12 @@ div.middle-background {
 }
 
 /* ------------- Section: Contact ------------ */
+/* contact섹션 배경색 지정 */
 section#contact {
-	background-color: white;
+	background-color: ghostwhite;
 }
 
+/* email form 을 감싸는 email-container */
 section#contact .container .email-container {
 	margin: 0 15%;
 	border: 2px solid #7e57ef;
@@ -340,35 +372,36 @@ section#contact .container .email-container {
 	border-radius: 10px;
 }
 
-/* section#contact .container .email-container .input {
-	margin-bottom: 1rem;;
-} */
-
+/* email-left와 email-right에 float을 적용함으로써 email-container의 height이 0이 되는 문제 해결 */
 .email-container::after {
 	display: block;
 	content: "";
 	clear: both;
 }
 
+/* email-container 내 input 클래스(name, email란) 스타일 적용 */
 .email-container .input {
 	box-sizing: border-box;
 	padding: 0.5rem;
 }
 
+/* email-container input 태그 스타일 변경 */
 .email-container .input input {
 	padding: 0.5rem;
-	outline: none;
+	outline: none; /* 외곽선 제거 */
 	width: 100%;
 	border: 2px solid #b4a7d6;
 	box-sizing: border-box;
 	border-radius: 5px;
 }
 
+/* form 내부 요소 클릭시(포커스 받으 시) 유저가 알 수 있게 테두리 음영 효과 */
 .email-container .input input:focus,
 .email-container .input textarea:focus {
 	box-shadow: 0px 0px 20px #b4a7d6;
 }
 
+/* textarea 요소 스타일링 */
 .email-container .input textarea {
 	padding: 0.5rem;
 	width: 100%;
@@ -379,23 +412,26 @@ section#contact .container .email-container {
 	border-radius: 5px;
 }
 
+/* input, textarea 요소와 같이 묶인 label 스타일 적용 */
 .email-container .input label {
 	display: block;
 	margin-bottom: 0.3rem;
 	font-size: 1.2rem;
 }
 
+/* name, email란 좌측에 띄워서 정렬 */
 .email-container .email-left {
 	width: 50%;
 	float: left;
 }
 
+/* contents(textarea)란 우측에 띄워서 정렬 */
 .email-container .email-right {
 	width: 50%;
 	float: right;
 }
 
-/* 이메일 전송 버튼 */
+/* 이메일 전송 버튼을 감싸는 박스 */
 .email-container .send-button {
 	clear: both;
 	width: 100%;
@@ -403,20 +439,24 @@ section#contact .container .email-container {
 	padding: 0.9rem;
 }
 
+/* 이메일 전송 버튼 */
 .email-container #send-button {
 	display: block;
 	width: 100%;
 	height: 50px;
 	background-color: #b4a7d6;
 	border: 1px solid transparent;
+	border-radius: 10px;
 	color: white;
 }
 
+/* 이메일 전송버튼 호버링 시 음영 효과 */
 .email-container #send-button:hover {
 	cursor: pointer;
 	box-shadow: 0px 0px 20px #b4a7d6;
 }
 
+/* 이메일 전송 버튼 내부에 비행기 아이콘 스타일링 */
 .email-container #send-button i {
 	font-size: 2rem;
 }
@@ -426,6 +466,7 @@ section#contact .personal-info {
 	margin-top: 1rem;
 }
 
+/* personal information 공개란 */
 section#contact .personal-info .personal-detail {
 	text-align: center;
 	font-size: 1.35rem;
@@ -437,21 +478,25 @@ section#contact .personal-info .personal-detail {
 	box-sizing: border-box;
 }
 
+/* 이메일 공개란 */
 .personal-detail:first-child {
 	float: left;
 	margin-left: 18%;
 }
 
+/* 전화번호 공개란 */
 .personal-detail:last-child {
 	float: right;
 	margin-right: 18%;
 }
 
+/* 이메일, 전화번호 공개란에 사용된 아이콘 */
 section#contact .personal-info .personal-detail i {
 	display: inline-block;
 	margin-right: 15px;
 }
 
+/* 이메일, 전화번호 공개란에 사용된 float속성으로 인하여 상위 요소 height 0되는 문제 해결 */
 section#contact .personal-info::after {
 	content: "";
 	clear: both;
@@ -467,34 +512,40 @@ footer {
 	background-color: rgba(126, 87, 239, 0.8);
 }
 
+/* footer의 요소들을 담는 container */
 footer #footer-container {
 	padding: 0.5rem;
 	display: flex;
-	justify-content: space-between; /* Who Am I는 왼쪽으로, Nav list는 우측 정렬 */
+	justify-content: space-between; /* Who Am I는 왼쪽으로, list는 우측 정렬 */
 	align-items: center; /* 플렉스 아이템을 교차축 방향 중앙 정렬 (수직 중앙 정렬) */
 }
 
-#footer-container nav{
-	margin-right: 2rem;
-}
-
-#footer-container span{
-	margin-left: 2rem;
+/* footer의 Who Am I? 프로젝트명 */
+#footer-container span {
+	margin-left: 1.5rem;
 	font-size: 2rem;
 	font-weight: bold;
 }
 
-#footer-container nav ul {
-	font-size: 1.0rem;
+#footer-container .ending-msg {
+	margin-right: 1.5rem;
+}
+
+/* footer 우측 감사메시지, copyright에 대한 스타일 */
+#footer-container ul {
+	font-size: 1rem;
 	display: block;
 	margin: 0;
 	list-style-type: none;
+	text-align: right;
 }
 
+/* 감사메시지, copyright간 간격 조절 */
 #footer-container nav ul li {
 	padding: 0.2rem;
 }
 
+/* 감사메시지 폰트 스타일링 */
 #footer-container nav ul li:first-child {
 	font-weight: bold;
 }

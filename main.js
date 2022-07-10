@@ -1,3 +1,6 @@
+/*
+	타이핑 효과 관련 함수
+*/
 // 한 글자씩 element에 textArr의 머리 글자를 추가하는 함수
 function typingEffect() {
 	// let currentTextArr = textArr; // 임시 참조 변수 선언
@@ -35,6 +38,9 @@ function getNextText() {
 	typingEffect();
 }
 
+/*
+	사용자 입력 처리 관련 함수
+*/
 // id를 이용하여 요소의 텍스트 변경
 function changeTextById(id, text) {
 	let element = document.getElementById(id); // id를 이용하여 요소를 찾는다.
@@ -47,15 +53,18 @@ function ask() {
 	changeTextById("introduction-text", text); // 입력 텍스트로 요소의 텍스트 변경
 }
 
+/*
+	헤더 & 내비게이션 배경색 변경, 내비게이션 동작 기능 관련 함수
+*/
 // 내비게이션
 function navigate(obj) {
 	// 클릭이 이루어지는 객체의 title(퉅팁표시 속성)의 속성값을 찾는다.
 	const navTargetId = obj.title; // 객체의 title 속성값
-	// console.log(navTargetId);
+	console.log(navTargetId);
 
 	// 찾은 title 속성값을 이용해 이동해야하는 element tag를 찾는다.
 	const navTarget = document.getElementById(navTargetId); // getElementById 안에 '#'포함 안 함
-	// console.log(navTarget);
+	console.log(navTarget);
 
 	// 현재 위치에서의 문서의 수직 방향 스크롤된 정도(px)
 	const currentYPostion = window.pageYOffset;
@@ -69,16 +78,34 @@ function navigate(obj) {
 	window.scrollTo({ top: targetYPosition, behavior: "smooth" });
 }
 
-/* main */
-introduction = document.getElementById("introduction-text"); // html 태그 찾기
-texts = [
+// 스크롤 시 내비게이션 배경색 변화하는 함수
+let headerNav = document.getElementById("headerNav"); // #headerNav id를 가진 element 찾기
+// console.log(headerNav)
+// 이벤트리스너 등록: 스크롤 이벤트 발생 시, 클래스 변경함수 호출
+window.addEventListener("scroll", function () {
+	let yPosition = window.pageYOffset; // 현재 페이지의 수직방향 스크롤 정도
+	modifyClass(headerNav, yPosition); // 스크롤 정도를 가지고 배경색을 변경할 것인지 판단.
+});
+
+// 객체의 클래스를 조작하는 함수 (클래스 추가 또는 제거)
+function modifyClass(obj, yPosition) {
+	// 스크롤이 발생했으면 해당 객체에 "change-opacity" 클래스를 추가하고
+	// 그렇지 않다면 해당 클래스 제거
+	yPosition != 0 ? obj.classList.add("change-opacity") : obj.classList.remove("change-opacity");
+}
+
+/* 
+	main
+*/
+let introduction = document.getElementById("introduction-text"); // html 태그 찾기
+let texts = [
 	// #introduction-text 에 표시할 문장들
 	"시도하기를 좋아하는 웹 백엔드",
 	"기록하기를 좋아하는",
 	"공유의 가치를 중시하는",
 	"기술의 변화에 흔들리지 않는",
 ];
-textIndex = 0; // texts를 순회하는 인덱스
-text = texts[textIndex].split(""); // texts를 순회하며 원소별로 배열화
+let textIndex = 0; // texts를 순회하는 인덱스
+let text = texts[textIndex].split(""); // texts를 순회하며 원소별로 배열화
 
 typingEffect(); // 타이핑 효과 시작

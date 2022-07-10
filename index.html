@@ -2,8 +2,6 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" scontent="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Who Am I?</title>
 		<!-- 기호(아이콘) 사이트 : font awesome -->
 		<link
@@ -20,18 +18,21 @@
 		<!-- 시맨틱 태그: header -->
 		<header>
 			<!-- header태그 내의 로고(Who AM I)와 nav태그들을 묶는 container -->
-			<div class="container">
-				<!-- 좌측 상단: 프로젝트명(또는 로고)표시 -->
+			<div class="container" id="headerNav">
+				<!-- 좌측 상단: 프로젝트명 표시 -->
 				<button title="welcome" onclick="navigate(this)">Who Am I?</button>
-				<!-- 각 섹션으로 이동할 수 있는 navigation -->
+				<!-- 각 섹션으로 이동할 수 있는 navigation (스크롤 효과) -->
 				<nav>
 					<ul>
+						<!-- about 섹션으로 이동 -->
 						<li>
 							<button class="nav-button" title="about" onclick="navigate(this)">About</button>
 						</li>
+						<!-- skills 섹션으로 이동 -->
 						<li>
 							<button class="nav-button" title="skills" onclick="navigate(this)">Skills</button>
 						</li>
+						<!-- contact 섹션으로 이동 -->
 						<li>
 							<button class="nav-button" title="contact" onclick="navigate(this)">Contact</button>
 						</li>
@@ -39,27 +40,31 @@
 				</nav>
 			</div>
 		</header>
-		<!-- welcome: 헤더 다음의 도입부 페이지 -->
+		<!-- welcome: 헤더 다음의 도입부 페이지. 타이핑 및 화살표 버튼 애니메이션 효과 -->
 		<main class="welcome" id="welcome">
 			<div class="container">
 				<h3>저는</h3>
+				<!-- 타이핑 애니메이션 -->
 				<h5><span id="introduction-text"></span> 개발자 입니다.</h5>
 				<p>
-					Do exercitation deserunt cupidatat tempor esse tempor duis officia fugiat. Excepteur id
-					anim consectetur eiusmod qui pariatur proident ad cupidatat do exercitation.
+					Do exercitation deserunt cupidatat tempor esse tempor duis officia fugiat.<br />
+					Excepteur id anim consectetur eiusmod qui pariatur proident ad cupidatat do exercitation.
 				</p>
+				<!-- 스크롤 버튼: 위 아래로 점핑하는 애니메이션 -->
 				<div class="scrolling-button" title="about" onclick="navigate(this)">
 					<i class="fa-solid fa-circle-down"></i>
 				</div>
 			</div>
 		</main>
-		<!-- Contents: About, Skills, Contact -->
+		<!-- 세 개의 콘텐츠 섹션: About, Skills, Contact -->
 		<!-- Section: About -->
 		<section id="about">
 			<div class="container">
+				<!-- About 섹션 타이틀 -->
 				<div class="section-title">
 					<h2>About Me</h2>
 				</div>
+				<!-- About 섹션 본문 -->
 				<div class="about-body">
 					<!-- profile : 프로필 사진 -->
 					<div class="profile">
@@ -98,9 +103,11 @@
 		<!-- Section: Skills -->
 		<section id="skills">
 			<div class="container">
+				<!-- skills 섹션 타이틀 -->
 				<div class="section-title">
 					<h2>Skills</h2>
 				</div>
+				<!-- Java, Spring 등 언어와 프레임워크 설명 및 호버시 색상 변경 효과 -->
 				<div class="programming">
 					<div class="details">
 						<i class="fa-brands fa-java"></i>
@@ -115,25 +122,26 @@
 						<i class="fa-solid fa-leaf"></i>
 						<p class="language">Spring</p>
 						<p>
-							Ad nostrud sit sint culpa. Ut occaecat ipsum pariatur fugiat proident elit occaecat
-							duis.
+							Ad nostrud sit sint culpa. Ut occaecat ipsum<br />
+							pariatur fugiat proident elit occaecat duis.
 						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- skills 섹션 이후의 배경 이미지. 고정된 효과 -->
+		<!-- skills 섹션 이후의 배경 이미지. 고정된 효과를 준다. -->
 		<div class="middle-background"></div>
 
 		<!-- Section: Contact -->
 		<section id="contact">
 			<div class="container">
+				<!-- Contact 섹션 타이틀 -->
 				<div class="section-title">
 					<h2>Contact</h2>
 				</div>
 				<div class="email-container">
-					<form action>
+					<form>
 						<!-- Contact - email 보내기 왼쪽 블럭 -->
 						<div class="email-left">
 							<div class="input">
@@ -152,7 +160,7 @@
 								<textarea id="email-contents"></textarea>
 							</div>
 						</div>
-						<!-- Send Button -->
+						<!-- 전송 버튼(클릭 시 최상단 이동) -->
 						<div class="send-button">
 							<button type="submit" id="send-button">
 								<i class="fa-solid fa-paper-plane"></i>
@@ -160,6 +168,7 @@
 						</div>
 					</form>
 				</div>
+				<!-- personal information 공개란 -->
 				<div class="personal-info">
 					<div class="personal-detail">
 						<i class="fa-solid fa-envelope"></i>
@@ -176,16 +185,18 @@
 		<!-- footer -->
 		<footer>
 			<div id="footer-container">
+				<!-- footer 좌측: 프로젝트명 -->
 				<span>Who Am I?</span>
-				<!-- 각 섹션으로 이동할 수 있는 navigation -->
-				<nav>
+				<!-- 감사메시지와 copyright을 포함하는 박스 -->
+				<div class="ending-msg">
+					<!-- 각 섹션으로 이동할 수 있는 navigation -->
 					<ul>
+						<!-- 감사메시지 -->
 						<li>Thank you for visiting</li>
-						<li>
-							<i class="fa-regular fa-copyright"></i> Seon-Ho 2022.07
-						</li>
+						<!-- copyright -->
+						<li><i class="fa-regular fa-copyright"></i> Seon-Ho 2022.07</li>
 					</ul>
-				</nav>
+				</div>
 			</div>
 		</footer>
 
